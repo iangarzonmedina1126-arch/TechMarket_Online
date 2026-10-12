@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMarket - Panel Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-metal { background: linear-gradient(145deg, #2a2d34, #1a1c23); }
+        .text-neon { color: #00d2ff; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans min-h-screen flex">
+    
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 border-r border-gray-700 min-h-screen p-4 flex flex-col">
+        <div class="text-2xl font-bold text-neon mb-8 text-center border-b border-gray-700 pb-4">ADMIN PANEL</div>
+        <nav class="space-y-2 flex-grow">
+            <a href="#" class="block bg-blue-600/20 text-blue-400 px-4 py-2 rounded-lg border border-blue-500/30">Dashboard</a>
+            <a href="#" class="block hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Productos</a>
+            <a href="#" class="block hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Pedidos</a>
+            <a href="#" class="block hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Usuarios</a>
+        </nav>
+        <button onclick="window.location.href='index.html'" class="mt-auto bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-lg">Cerrar Sesión</button>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow p-8">
+        <header class="mb-8 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4">Dashboard General</h1>
+            <span class="bg-gray-800 border border-gray-600 px-4 py-2 rounded-lg text-sm">Staff: Ian Garzón</span>
+        </header>
+
+        <!-- Tarjetas de Resumen -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-metal rounded-xl p-6 border border-gray-700 shadow-lg">
+                <h3 class="text-gray-400 text-sm">Ventas Totales</h3>
+                <p class="text-3xl font-bold text-neon mt-2">$ 12.5M</p>
+            </div>
+            <div class="bg-metal rounded-xl p-6 border border-gray-700 shadow-lg">
+                <h3 class="text-gray-400 text-sm">Pedidos Pendientes</h3>
+                <p class="text-3xl font-bold text-white mt-2">14</p>
+            </div>
+            <div class="bg-metal rounded-xl p-6 border border-gray-700 shadow-lg">
+                <h3 class="text-gray-400 text-sm">Productos con Stock Bajo</h3>
+                <p class="text-3xl font-bold text-red-400 mt-2">3</p>
+            </div>
+        </div>
+
+        <!-- Tabla de Últimos Pedidos -->
+        <div class="bg-metal rounded-xl p-6 border border-gray-700">
+            <h2 class="text-xl font-bold text-white mb-4">Últimos Pedidos</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-gray-800 text-gray-400">
+                        <tr>
+                            <th class="px-4 py-3 rounded-tl-lg">ID Pedido</th>
+                            <th class="px-4 py-3">Cliente</th>
+                            <th class="px-4 py-3">Fecha</th>
+                            <th class="px-4 py-3">Estado</th>
+                            <th class="px-4 py-3 rounded-tr-lg">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700">
+                        <tr class="hover:bg-gray-800/50">
+                            <td class="px-4 py-3 font-medium text-white">#001</td>
+                            <td class="px-4 py-3 text-gray-300">Juan Pérez</td>
+                            <td class="px-4 py-3 text-gray-400">Hoy, 10:30 AM</td>
+                            <td class="px-4 py-3"><span class="bg-yellow-900/50 text-yellow-500 px-2 py-1 rounded text-xs">Pendiente</span></td>
+                            <td class="px-4 py-3 font-bold text-neon">$ 4.500.000</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/50">
+                            <td class="px-4 py-3 font-medium text-white">#002</td>
+                            <td class="px-4 py-3 text-gray-300">Laura Ramos</td>
+                            <td class="px-4 py-3 text-gray-400">Ayer, 16:45 PM</td>
+                            <td class="px-4 py-3"><span class="bg-green-900/50 text-green-500 px-2 py-1 rounded text-xs">Entregado</span></td>
+                            <td class="px-4 py-3 font-bold text-neon">$ 800.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

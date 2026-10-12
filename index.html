@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMarket Online</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Detalles metálicos personalizados */
+        .bg-metal {
+            background: linear-gradient(145deg, #2a2d34, #1a1c23);
+            box-shadow: 5px 5px 10px #15171c, -5px -5px 10px #2f333c;
+        }
+        .text-neon { color: #00d2ff; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-2xl tracking-wider text-neon">TECHMARKET</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium border border-gray-700">Catálogo</a>
+                        <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Carrito (0)</a>
+                        <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Checkout</a>
+                        <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Panel Admin</a>
+                        <a href="#" class="ml-4 px-4 py-2 rounded-md text-sm font-medium bg-blue-600 hover:bg-blue-500 text-white transition">Iniciar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Banner -->
+    <header class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold text-white sm:text-5xl border-l-4 border-blue-500 pl-4">
+            Catálogo de Productos
+        </h1>
+        <p class="mt-3 text-xl text-gray-400 sm:mt-4">
+            Encuentra lo mejor en tecnología, periféricos y equipos de alto rendimiento.
+        </p>
+    </header>
+
+    <!-- Grid de Productos -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div id="contenedor-productos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Mensaje de carga -->
+            <div class="col-span-full text-center py-10">
+                <p class="text-gray-400 text-lg animate-pulse">Conectando con la base de datos de TechMarket...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script de conexión al Backend Java -->
+    <script>
+        async function cargarProductos() {
+            try {
+                // Aquí va la ruta de tu API en Java
+                const respuesta = await fetch('http://localhost:8080/api/productos');
+                
+                // Si el backend no está encendido, usamos datos de prueba (Mockup) para que la página no quede vacía
+                let productos;
+                if (!respuesta.ok) throw new Error("Backend apagado");
+                productos = await respuesta.json();
+                renderizarProductos(productos);
+
+            } catch (error) {
+                console.warn("Usando datos de prueba porque el backend de Java no está encendido.");
+                // MOCKUP DE DATOS (Basado en el SQL que creamos)
+                const datosDePrueba = [
+                    { Nombre: "Laptop Asus ROG", Descripción: "Laptop gamer de alto rendimiento", Precio: 4500000, Stock: 15 },
+                    { Nombre: "Mouse Logitech G502", Descripción: "Mouse gamer precisión hero", Precio: 250000, Stock: 50 },
+                    { Nombre: "Monitor Dell 24\"", Descripción: "Pantalla IPS Full HD", Precio: 750000, Stock: 15 },
+                    { Nombre: "Impresora Epson L3150", Descripción: "Impresora multifuncional EcoTank", Precio: 800000, Stock: 20 }
+                ];
+                renderizarProductos(datosDePrueba);
+            }
+        }
+
+        function renderizarProductos(productos) {
+            const contenedor = document.getElementById('contenedor-productos');
+            contenedor.innerHTML = ''; // Limpiar mensaje de carga
+
+            productos.forEach(prod => {
+                const precioCOP = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(prod.Precio);
+                
+                const tarjeta = `
+                    <div class="bg-metal rounded-xl overflow-hidden border border-gray-700 transition transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 flex flex-col justify-between h-full">
+                        <div class="p-6 flex-grow">
+                            <div class="flex justify-between items-start mb-4">
+                                <h3 class="text-xl font-bold text-white leading-tight">${prod.Nombre}</h3>
+                            </div>
+                            <p class="text-sm text-gray-400 mb-4">${prod.Descripción}</p>
+                            <div class="text-2xl font-black text-neon mb-2">${precioCOP}</div>
+                            <p class="text-xs text-gray-500 mb-6">Disponibles: <span class="text-white font-bold">${prod.Stock}</span> unidades</p>
+                        </div>
+                        <div class="px-6 pb-6 mt-auto">
+                            <button class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-lg shadow-blue-600/30">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                `;
+                contenedor.innerHTML += tarjeta;
+            });
+        }
+
+        // Iniciar carga
+        cargarProductos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMarket - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-metal { background: linear-gradient(145deg, #2a2d34, #1a1c23); box-shadow: 5px 5px 10px #15171c, -5px -5px 10px #2f333c; }
+        .text-neon { color: #00d2ff; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans min-h-screen flex items-center justify-center p-4">
+    <div class="bg-metal rounded-2xl p-8 max-w-md w-full border border-gray-700 shadow-2xl shadow-blue-900/20">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-neon mb-2">TECHMARKET</h1>
+            <p class="text-gray-400">Ingresa a tu cuenta</p>
+        </div>
+        <form class="space-y-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-1">Correo Electrónico</label>
+                <input type="email" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500" placeholder="ejemplo@correo.com">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-1">Contraseña</label>
+                <input type="password" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500" placeholder="••••••••">
+            </div>
+            <button type="button" onclick="window.location.href='index.html'" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                Iniciar Sesión
+            </button>
+        </form>
+        <div class="mt-6 text-center text-sm text-gray-400">
+            ¿No tienes cuenta? <a href="#" class="text-neon hover:underline">Regístrate aquí</a>
+        </div>
+    </div>
+</body>
+</html>

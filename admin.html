@@ -3,83 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechMarket - Panel Admin</title>
+    <title>TechMarket Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .bg-metal { background: linear-gradient(145deg, #2a2d34, #1a1c23); }
-        .text-neon { color: #00d2ff; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .hero-bg { background-color: #1a2332; }
+        .footer-bg { background-color: #0f172a; }
+        .glass-tag { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans min-h-screen flex">
-    
-    <!-- Sidebar -->
-    <aside class="w-64 bg-gray-800 border-r border-gray-700 min-h-screen p-4 flex flex-col">
-        <div class="text-2xl font-bold text-neon mb-8 text-center border-b border-gray-700 pb-4">ADMIN PANEL</div>
-        <nav class="space-y-2 flex-grow">
-            <a href="#" class="block bg-blue-600/20 text-blue-400 px-4 py-2 rounded-lg border border-blue-500/30">Dashboard</a>
-            <a href="#" class="block hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Productos</a>
-            <a href="#" class="block hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Pedidos</a>
-            <a href="#" class="block hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">Usuarios</a>
-        </nav>
-        <button onclick="window.location.href='index.html'" class="mt-auto bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-lg">Cerrar Sesión</button>
-    </aside>
+<body class="text-gray-800">
 
-    <!-- Contenido Principal -->
-    <main class="flex-grow p-8">
-        <header class="mb-8 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-white border-l-4 border-blue-500 pl-4">Dashboard General</h1>
-            <span class="bg-gray-800 border border-gray-600 px-4 py-2 rounded-lg text-sm">Staff: Ian Garzón</span>
-        </header>
+    <!-- Navegación -->
+    <nav class="bg-white px-6 py-4 flex items-center justify-between border-b border-gray-100 sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="bg-blue-600 text-white p-1.5 rounded-md">
+                <i class="fa-solid fa-border-all"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight">TechMarket Online</span>
+        </div>
 
-        <!-- Tarjetas de Resumen -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-metal rounded-xl p-6 border border-gray-700 shadow-lg">
-                <h3 class="text-gray-400 text-sm">Ventas Totales</h3>
-                <p class="text-3xl font-bold text-neon mt-2">$ 12.5M</p>
-            </div>
-            <div class="bg-metal rounded-xl p-6 border border-gray-700 shadow-lg">
-                <h3 class="text-gray-400 text-sm">Pedidos Pendientes</h3>
-                <p class="text-3xl font-bold text-white mt-2">14</p>
-            </div>
-            <div class="bg-metal rounded-xl p-6 border border-gray-700 shadow-lg">
-                <h3 class="text-gray-400 text-sm">Productos con Stock Bajo</h3>
-                <p class="text-3xl font-bold text-red-400 mt-2">3</p>
+        <div class="hidden md:flex flex-1 max-w-xl mx-8">
+            <div class="relative w-full">
+                <input type="text" placeholder="Buscar productos, marcas, categorías..." class="w-full bg-gray-50 border border-gray-200 text-sm rounded-lg pl-10 pr-4 py-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-gray-400"></i>
             </div>
         </div>
 
-        <!-- Tabla de Últimos Pedidos -->
-        <div class="bg-metal rounded-xl p-6 border border-gray-700">
-            <h2 class="text-xl font-bold text-white mb-4">Últimos Pedidos</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm">
-                    <thead class="bg-gray-800 text-gray-400">
-                        <tr>
-                            <th class="px-4 py-3 rounded-tl-lg">ID Pedido</th>
-                            <th class="px-4 py-3">Cliente</th>
-                            <th class="px-4 py-3">Fecha</th>
-                            <th class="px-4 py-3">Estado</th>
-                            <th class="px-4 py-3 rounded-tr-lg">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-700">
-                        <tr class="hover:bg-gray-800/50">
-                            <td class="px-4 py-3 font-medium text-white">#001</td>
-                            <td class="px-4 py-3 text-gray-300">Juan Pérez</td>
-                            <td class="px-4 py-3 text-gray-400">Hoy, 10:30 AM</td>
-                            <td class="px-4 py-3"><span class="bg-yellow-900/50 text-yellow-500 px-2 py-1 rounded text-xs">Pendiente</span></td>
-                            <td class="px-4 py-3 font-bold text-neon">$ 4.500.000</td>
-                        </tr>
-                        <tr class="hover:bg-gray-800/50">
-                            <td class="px-4 py-3 font-medium text-white">#002</td>
-                            <td class="px-4 py-3 text-gray-300">Laura Ramos</td>
-                            <td class="px-4 py-3 text-gray-400">Ayer, 16:45 PM</td>
-                            <td class="px-4 py-3"><span class="bg-green-900/50 text-green-500 px-2 py-1 rounded text-xs">Entregado</span></td>
-                            <td class="px-4 py-3 font-bold text-neon">$ 800.000</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-gray-600">
+            <a href="#" class="text-black">Inicio</a>
+            <a href="#" class="hover:text-blue-600">Productos</a>
+            <a href="#" class="hover:text-blue-600">Categorías</a>
+            <a href="#" class="hover:text-blue-600">Ofertas</a>
+            <a href="#" class="hover:text-blue-600">Nosotros</a>
+            <a href="#" class="hover:text-blue-600">Contacto</a>
+            <a href="#" class="text-gray-500 text-lg hover:text-blue-600"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition">Iniciar sesión</button>
+            <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium px-5 py-2.5 rounded-lg transition">Admin</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white px-8 md:px-16 py-16 relative overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+                <span class="inline-flex items-center gap-2 bg-[#1e293b] text-blue-300 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+                    <span class="w-2 h-2 rounded-full bg-blue-400"></span> Nuevos productos disponibles
+                </span>
+                <h1 class="text-5xl font-bold leading-tight mb-4 text-blue-50">
+                    Tecnología<br><span class="text-blue-400">de última generación</span>
+                </h1>
+                <p class="text-gray-400 text-base mb-8 max-w-md">
+                    Laptops, smartphones, periféricos y más. Los mejores equipos tecnológicos con garantía oficial y entrega a nivel nacional.
+                </p>
+                <div class="flex items-center gap-4 mb-12">
+                    <button class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded-lg transition">Ver catálogo</button>
+                    <button class="bg-transparent border border-gray-600 hover:border-gray-400 text-white font-medium px-6 py-3 rounded-lg transition">Ver ofertas</button>
+                </div>
+                
+                <div class="flex gap-8">
+                    <div>
+                        <div class="text-2xl font-bold text-white">5,000+</div>
+                        <div class="text-xs text-gray-400">Productos</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white">50,000+</div>
+                        <div class="text-xs text-gray-400">Clientes</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-white">24h</div>
+                        <div class="text-xs text-gray-400">Entregas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="MacBook Neon" class="rounded-2xl shadow-2xl w-full object-cover h-[400px]">
+                
+                <!-- Floating Price Tag -->
+                <div class="absolute -bottom-4 -left-4 glass-tag text-gray-900 px-5 py-3 rounded-xl shadow-lg border border-gray-100">
+                    <div class="text-xs text-gray-500 mb-1">MacBook Pro M3</div>
+                    <div class="font-bold text-blue-600 text-lg">$ 8.499.000</div>
+                </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Categorías -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex justify-between items-end mb-6">
+            <h2 class="text-xl font-bold text-gray-900">Categorías</h2>
+            <a href="#" class="text-sm text-blue-600 hover:underline font-medium">Ver todas</a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+            <!-- Items de Categoría -->
+            <div class="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Laptops" class="w-12 h-12 mx-auto object-cover rounded-md mb-3">
+                <span class="text-xs font-medium text-gray-700">Laptops</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Celulares" class="w-12 h-12 mx-auto object-cover rounded-md mb-3">
+                <span class="text-xs font-medium text-gray-700">Celulares</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Impresoras" class="w-12 h-12 mx-auto object-cover rounded-md mb-3">
+                <span class="text-xs font-medium text-gray-700">Impresoras</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Televisores" class="w-12 h-12 mx-auto object-cover rounded-md mb-3">
+                <span class="text-xs font-medium text-gray-700">Televisores</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Pantallas" class="w-12 h-12 mx-auto object-cover rounded-md mb-3">
+                <span class="text-xs font-medium text-gray-700">Pantallas</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Accesorios" class="w-12 h-12 mx-auto object-cover rounded-md mb-3">
+                <span class="text-xs font-medium text-gray-700">Accesorios</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Licencias" class="w-12 h-12 mx-auto object-cover rounded-md mb-3">
+                <span class="text-xs font-medium text-gray-700">Licencias</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 text-center border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1626082929543-7b441c2771d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Cartuchos" class="w-12 h-12 mx-auto object-cover rounded-md mb-3">
+                <span class="text-xs font-medium text-gray-700">Cartuchos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="max-w-7xl mx-auto px-6 py-6 pb-20">
+        <div class="flex justify-between items-end mb-8">
+            <h2 class="text-xl font-bold text-gray-900">Productos destacados <span class="text-gray-400 font-normal text-sm ml-1">(15)</span></h2>
+            <a href="#" class="text-sm text-blue-600 hover:underline font-medium">Ver todos</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Producto 1 -->
+            <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition">
+                <div class="relative bg-gray-50 rounded-xl h-48 mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="absolute top-3 left-3 bg-white text-gray-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">Laptops</span>
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="MacBook" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">MacBook Pro 14" M3</h3>
+                <p class="text-xs text-gray-500 mb-4 line-clamp-1">Chip M3 Pro, 18GB RAM, 512GB SSD, pantalla Liquid Retina XDR</p>
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-lg font-bold text-blue-600">$ 8.499.000</span>
+                    <span class="text-xs font-medium text-emerald-500">12 en stock</span>
+                </div>
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2.5 rounded-lg transition flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition">
+                <div class="relative bg-gray-50 rounded-xl h-48 mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="absolute top-3 left-3 bg-white text-gray-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">Laptops</span>
+                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dell XPS" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">Dell XPS 15 OLED</h3>
+                <p class="text-xs text-gray-500 mb-4 line-clamp-1">Intel Core i7-13700H, 16GB RAM, 512GB NVMe, pantalla OLED 3.5K</p>
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-lg font-bold text-blue-600">$ 6.899.000</span>
+                    <span class="text-xs font-medium text-emerald-500">8 en stock</span>
+                </div>
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2.5 rounded-lg transition flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition">
+                <div class="relative bg-gray-50 rounded-xl h-48 mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="absolute top-3 left-3 bg-white text-gray-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">Gaming Laptops</span>
+                    <span class="absolute top-3 right-3 bg-orange-50 text-orange-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">Pocas unidades</span>
+                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="ASUS ROG" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">ASUS ROG Strix G16</h3>
+                <p class="text-xs text-gray-500 mb-4 line-clamp-1">AMD Ryzen 9, RTX 4070, 16GB RAM, pantalla 240Hz</p>
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-lg font-bold text-blue-600">$ 5.200.000</span>
+                    <span class="text-xs font-medium text-emerald-500">3 en stock</span>
+                </div>
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2.5 rounded-lg transition flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition">
+                <div class="relative bg-gray-50 rounded-xl h-48 mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="absolute top-3 left-3 bg-white text-gray-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">Impresoras Láser</span>
+                    <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="HP LaserJet" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">HP LaserJet Pro M404n</h3>
+                <p class="text-xs text-gray-500 mb-4 line-clamp-1">Impresora láser monocromática, 38ppm, USB/Ethernet</p>
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-lg font-bold text-blue-600">$ 1.150.000</span>
+                    <span class="text-xs font-medium text-emerald-500">18 en stock</span>
+                </div>
+                <button class="w-full bg-transparent border border-gray-200 hover:border-blue-600 text-blue-600 text-sm font-medium py-2.5 rounded-lg transition flex justify-center items-center gap-2">
+                    Ver detalles
+                </button>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition">
+                <div class="relative bg-gray-50 rounded-xl h-48 mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="absolute top-3 left-3 bg-white text-gray-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">Impresoras</span>
+                    <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Epson EcoTank" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">Epson EcoTank L3250</h3>
+                <p class="text-xs text-gray-500 mb-4 line-clamp-1">Impresora multifunción de tinta continua, WiFi, 5760 dpi</p>
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-lg font-bold text-blue-600">$ 890.000</span>
+                    <span class="text-xs font-medium text-emerald-500">24 en stock</span>
+                </div>
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2.5 rounded-lg transition flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition">
+                <div class="relative bg-gray-50 rounded-xl h-48 mb-4 overflow-hidden flex items-center justify-center">
+                    <span class="absolute top-3 left-3 bg-white text-gray-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">Celulares</span>
+                    <span class="absolute top-3 right-3 bg-orange-50 text-orange-600 text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">Pocas unidades</span>
+                    <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Samsung Galaxy" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-bold text-gray-900 text-sm mb-1">Samsung Galaxy S24 Ultra</h3>
+                <p class="text-xs text-gray-500 mb-4 line-clamp-1">Snapdragon 8 Gen 3, 12GB RAM, 256GB, cámara 200MP, S-Pen</p>
+                <div class="flex justify-between items-end mb-4">
+                    <span class="text-lg font-bold text-blue-600">$ 4.950.000</span>
+                    <span class="text-xs font-medium text-emerald-500">2 en stock</span>
+                </div>
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2.5 rounded-lg transition flex justify-center items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                </button>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bg text-gray-300 pt-16 pb-8 border-t-4 border-blue-600">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            
+            <!-- Columna 1 -->
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="bg-blue-600 text-white p-1.5 rounded-md">
+                        <i class="fa-solid fa-border-all"></i>
+                    </div>
+                    <span class="font-bold text-xl text-white tracking-tight">TechMarket Online</span>
+                </div>
+                <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                    Tu tienda de tecnología de confianza. Los mejores productos con garantía y soporte especializado.
+                </p>
+            </div>
+
+            <!-- Columna 2 -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Comprar</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Laptops</a></li>
+                    <li><a href="#" class="hover:text-white transition">Celulares</a></li>
+                    <li><a href="#" class="hover:text-white transition">Accesorios</a></li>
+                    <li><a href="#" class="hover:text-white transition">Impresoras</a></li>
+                    <li><a href="#" class="hover:text-white transition">Licencias</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3 -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Soporte</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Centro de ayuda</a></li>
+                    <li><a href="#" class="hover:text-white transition">Devoluciones</a></li>
+                    <li><a href="#" class="hover:text-white transition">Estado del pedido</a></li>
+                    <li><a href="#" class="hover:text-white transition">Garantías</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 4 -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Contacto</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-regular fa-envelope mt-1 text-gray-500"></i>
+                        <span>info@techmarket.co</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone mt-1 text-gray-500"></i>
+                        <span>(601) 123-4567</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot mt-1 text-gray-500"></i>
+                        <span>Bogotá, Colombia</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-regular fa-clock mt-1 text-gray-500"></i>
+                        <span>Lun-Sab 8am-7pm</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+            <p>&copy; 2024 TechMarket Online. Todos los derechos reservados.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition">Privacidad</a>
+                <a href="#" class="hover:text-white transition">Términos</a>
+                <a href="#" class="hover:text-white transition">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

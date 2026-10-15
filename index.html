@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TechMarket Online</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f5f9;--card:#fff;--ink:#0f172a;--mute:#64748b;--line:#e2e8f0;--blue:#2563eb;--blue2:#60a5fa;--hero:#0f172a;--amber:#f59e0b;--ok:#059669;--foot:#0a0f1c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--card:#131c2e;--ink:#e8edf6;--mute:#93a1b8;--line:#223049}}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#131c2e;--ink:#e8edf6;--mute:#93a1b8;--line:#223049}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--card);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:12px 20px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;white-space:nowrap}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--blue);display:grid;place-items:center;color:#fff;font-style:normal;font-size:14px}
+.nav input{flex:0 1 210px;min-width:0;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;background:var(--card);color:var(--ink)}
+.links{display:flex;gap:18px;font-size:13px;align-items:center}
+.links a:hover{color:var(--blue)}
+.cart{position:relative;background:none;font-size:18px;color:var(--ink)}
+.cart b{position:absolute;top:-8px;right:-10px;background:var(--blue);color:#fff;font-size:10px;border-radius:9px;padding:1px 5px}
+.btn{padding:9px 16px;border-radius:7px;font-size:13px;font-weight:600}
+.pri{background:var(--blue);color:#fff}
+.sec{background:var(--line);color:var(--ink)}
+.right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.hero{background:radial-gradient(circle at 20% 20%,#1e3a5f,var(--hero) 60%);color:#fff}
+.hero .in{max-width:1200px;margin:auto;padding:60px 20px 70px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.tag{display:inline-block;font-size:12px;padding:5px 12px;border:1px solid #2b4f85;background:#16294a;border-radius:20px;color:#bcd3f5;margin-bottom:22px}
+.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.1;font-weight:700}
+.hero h1 span{display:block;color:var(--blue2)}
+.hero p{margin:22px 0;color:#c3cfe0;line-height:1.6;max-width:480px;font-size:15px}
+.hero .b2{background:transparent;border:1px solid #475569;color:#fff}
+.stats{display:flex;gap:26px;margin-top:34px}
+.stats b{display:block;font-size:17px}.stats small{color:#94a3b8;font-size:12px}
+.shot{position:relative;aspect-ratio:16/10;border-radius:18px;background:linear-gradient(135deg,#7c3aed,#c026d3 50%,#1e1b4b);display:grid;place-items:center;font-size:90px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.float{position:absolute;left:-14px;bottom:-16px;background:#fff;color:#0f172a;border-radius:12px;padding:10px 14px;font-size:11px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.float b{display:block;color:var(--blue);font-size:15px;margin-top:2px}
+main{max-width:1200px;margin:auto;padding:44px 20px 60px}
+.head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+.head h2{font-size:19px}.head h2 small{font-size:12px;color:var(--mute);background:var(--line);padding:1px 7px;border-radius:9px;margin-left:6px;font-weight:400}
+.head a{color:var(--blue);font-size:13px}
+.cats{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;margin-bottom:46px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 6px;text-align:center;font-size:11px;color:var(--mute)}
+.cat.on{border-color:var(--blue);color:var(--blue)}
+.cat span{display:grid;place-items:center;width:38px;height:38px;margin:0 auto 8px;border-radius:9px;font-size:20px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.p.low{border-color:#fcd34d}
+.img{position:relative;height:150px;display:grid;place-items:center;font-size:62px}
+.chip{position:absolute;top:10px;left:10px;font-size:11px;background:rgba(255,255,255,.92);color:#334155;padding:3px 10px;border-radius:12px}
+.chip.w{left:auto;right:10px;background:#fef3c7;color:#b45309}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.body h3{font-size:14px}.body .d{font-size:12px;color:var(--mute);line-height:1.4;min-height:34px}
+.row{display:flex;justify-content:space-between;align-items:center;margin:6px 0}
+.price{font-weight:600;color:var(--blue);font-size:17px}
+.stock{font-size:11px;color:var(--ok)}.low .stock{color:#c2410c}
+.add{background:var(--blue);color:#fff;padding:10px;border-radius:8px;font-size:13px;font-weight:500}
+.low .add{background:var(--amber)}
+.add:hover{filter:brightness(1.08)}
+.empty{grid-column:1/-1;text-align:center;color:var(--mute);padding:40px}
+footer{background:var(--foot);color:#cbd5e1;font-size:12px}
+.fin{max-width:1200px;margin:auto;padding:44px 20px 24px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:30px}
+.fin h4{color:#fff;font-size:13px;margin-bottom:14px}
+.fin a,.fin li{display:block;list-style:none;margin-bottom:9px;color:#94a3b8}
+.fin a:hover{color:#fff}
+.fin p{color:#94a3b8;line-height:1.6;margin-top:14px}
+.copy{max-width:1200px;margin:auto;padding:18px 20px 28px;border-top:1px solid #1e293b;display:flex;justify-content:space-between;color:#64748b}
+.copy div{display:flex;gap:18px}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translate(-50%,30px);background:#0f172a;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:20}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.links,.nav input{display:none}.hero .in{grid-template-columns:1fr}.cats{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.fin{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.copy{flex-direction:column;gap:10px}.right .sec{display:none}}
+
+.ov{position:fixed;inset:0;background:rgba(2,6,23,.55);z-index:30;display:none;align-items:center;justify-content:center;padding:16px}
+.ov.on{display:flex}
+.box{background:var(--card);border-radius:14px;width:100%;max-width:400px;max-height:90vh;overflow:auto;padding:24px}
+.box.big{max-width:860px}
+.box h3{font-size:19px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.x{background:none;color:var(--mute);font-size:20px}
+.tabs{display:flex;gap:6px;margin-bottom:16px}.tabs button{flex:1;padding:8px;border-radius:7px;background:var(--line);color:var(--ink);font-size:13px}.tabs button.on{background:var(--blue);color:#fff}
+.f{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;font-size:12px;color:var(--mute)}
+.f input,.f select,.f textarea{padding:9px 11px;border:1px solid var(--line);border-radius:8px;font:inherit;font-size:14px;background:var(--bg);color:var(--ink)}
+.msg{font-size:12px;color:#dc2626;min-height:16px;margin-bottom:8px}.hint{font-size:11px;color:var(--mute);margin-top:12px;line-height:1.5}
+.full{width:100%;padding:11px}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--card);z-index:31;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column;padding:20px;padding-top:calc(20px + env(safe-area-inset-top,0px));box-shadow:-10px 0 40px rgba(0,0,0,.25)}
+.drawer.on{transform:none}
+.items{flex:1;overflow:auto;margin:6px 0}
+.it{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+.it .ic{width:46px;height:46px;border-radius:9px;display:grid;place-items:center;font-size:22px;flex:none}
+.it .inf{flex:1;min-width:0}.it .inf b{display:block;font-weight:500}.it .inf span{color:var(--blue);font-size:12px}
+.qty{display:flex;align-items:center;gap:8px}.qty button{width:24px;height:24px;border-radius:6px;background:var(--line);color:var(--ink)}
+.tot{display:flex;justify-content:space-between;font-size:17px;font-weight:600;padding:14px 0}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}.tbl th,.tbl td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}.tbl th{color:var(--mute);font-weight:500;font-size:12px}
+.mini{padding:5px 10px;border-radius:6px;font-size:12px;background:var(--line);color:var(--ink);margin-right:4px}.mini.d{background:#fee2e2;color:#b91c1c}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ord{border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px;font-size:13px;line-height:1.6}
+.user{font-size:13px;color:var(--mute);white-space:nowrap}
+.sc{overflow-x:auto}
+</style>
+</head>
+<body>
+<div style="background:#fef3c7;color:#92400e;font:13px system-ui,sans-serif;text-align:center;padding:6px 12px">Versión demo: los datos se guardan en tu navegador. La versión con SQL Server está en la carpeta <b>backend</b> del repositorio.</div>
+<header><div class="nav">
+  <a class="logo" href="#"><i>▦</i>TechMarket Online</a>
+  <input id="q" type="search" placeholder="Buscar productos, marcas, categorías" aria-label="Buscar">
+  <nav class="links"><a href="#">Inicio</a><a href="#productos">Productos</a><a href="#categorias">Categorías</a><a href="#productos">Ofertas</a><a href="#contacto">Nosotros</a><a href="#contacto">Contacto</a></nav>
+  <div class="right"><button class="cart" id="cartBtn" aria-label="Carrito">🛒<b id="n">0</b></button><span class="user" id="who"></span><button class="btn pri" id="loginBtn">Iniciar sesión</button><button class="btn sec" id="adminBtn">Admin</button></div>
+</div></header>
+
+<section class="hero"><div class="in">
+  <div>
+    <span class="tag">● Nuevos productos disponibles</span>
+    <h1>Tecnología <span>de última generación</span></h1>
+    <p>Laptops, smartphones, periféricos y más. Los mejores equipos tecnológicos con garantía oficial y entrega a nivel nacional.</p>
+    <a class="btn pri" href="#productos">Ver catálogo</a> <a class="btn b2" href="#productos" style="margin-left:6px;display:inline-block">Ver ofertas</a>
+    <div class="stats"><div><b>5,000+</b><small>Productos</small></div><div><b>50,000+</b><small>Clientes</small></div><div><b>24h</b><small>Entregas</small></div></div>
+  </div>
+  <div class="shot">💻<div class="float">MacBook Pro M3<b>$ 8.499.000</b></div></div>
+</div></section>
+
+<main>
+  <div class="head" id="categorias"><h2>Categorías</h2><a href="#" id="all">Ver todas</a></div>
+  <div class="cats" id="cats"></div>
+  <div class="head" id="productos"><h2>Productos destacados <small id="count"></small></h2><a href="#" id="all2">Ver todos</a></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer id="contacto">
+  <div class="fin">
+    <div><a class="logo" href="#" style="color:#fff"><i>▦</i>TechMarket Online</a><p>Tu tienda de tecnología de confianza. Los mejores productos con garantía y soporte especializado.</p></div>
+    <div><h4>Comprar</h4><a href="#">Laptops</a><a href="#">Celulares</a><a href="#">Accesorios</a><a href="#">Impresoras</a><a href="#">Licencias</a></div>
+    <div><h4>Soporte</h4><a href="#">Centro de ayuda</a><a href="#">Devoluciones</a><a href="#">Estado del pedido</a><a href="#">Garantías</a><a href="#">Contacto</a></div>
+    <div><h4>Contacto</h4><ul><li>✉ info@techmarket.co</li><li>☎ (601) 123-4567</li><li>📍 Bogotá, Colombia</li><li>🕘 Lun-Sáb 8am-7pm</li></ul></div>
+  </div>
+  <div class="copy"><span>© 2024 TechMarket Online. Todos los derechos reservados.</span><div><a href="#">Privacidad</a><a href="#">Términos</a><a href="#">Cookies</a></div></div>
+</footer>
+<div class="ov" id="ov"><div class="box" id="box"></div></div>
+<aside class="drawer" id="drawer" aria-label="Carrito"><h3 style="display:flex;justify-content:space-between;font-size:19px">Tu carrito <button class="x" id="closeCart">✕</button></h3><div class="items" id="items"></div><div class="tot"><span>Total</span><span id="total"></span></div><button class="btn pri full" id="pay">Finalizar compra</button></aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const cats=[["Laptops","💻","#7c3aed"],["Celulares","📱","#1f2937"],["Impresoras","🖨️","#94a3b8"],["Televisores","📺","#0ea5e9"],["Pantallas","🖥️","#64748b"],["Accesorios","🎧","#0f766e"],["Licencias","🔑","#4f46e5"],["Cartuchos","🖨️","#a1a1aa"]];
+const seed=[
+["MacBook Pro 14\" M3",0,"Chip M3 Pro, 18GB RAM, 512GB SSD, pantalla Liquid Retina XDR",8499000,12],
+["Dell XPS 15 OLED",0,"Intel Core i7-13700H, 16GB RAM, 512GB NVMe, pantalla OLED 3.5K",6899000,8],
+["ASUS ROG Strix G16",0,"AMD Ryzen 9, RTX 4070, 16GB RAM, pantalla 240Hz",5200000,3],
+["HP LaserJet Pro M404n",2,"Impresora láser monocromática, 38ppm, USB/Ethernet",1150000,18],
+["Epson EcoTank L3250",2,"Impresora multifunción de tinta continua, WiFi, 5760 dpi",890000,24],
+["Samsung Galaxy S24 Ultra",1,"Snapdragon 8 Gen 3, 12GB RAM, 256GB, cámara 200MP, S-Pen",4950000,2],
+["Cartucho HP 664XL Negro",7,"Cartucho de tinta original de alto rendimiento",85000,2],
+["AirPods Pro 2da Gen",5,"Cancelación activa de ruido, estuche MagSafe, audio espacial",1150000,1],
+["iPhone 15 Pro 256GB",1,"Chip A17 Pro, titanio, cámara de 48MP, USB-C",5990000,10],
+["LG OLED C3 55\"",3,"Smart TV 4K OLED, 120Hz, webOS, Dolby Vision",4800000,6],
+["Monitor Dell UltraSharp 27\"",4,"Panel IPS 4K, USB-C, ajuste de altura completo",2300000,9],
+["Lenovo ThinkPad X1 Carbon",0,"Intel Core i7, 32GB RAM, 1TB SSD, 14\" 2.8K",7450000,7],
+["Microsoft 365 Familia",6,"Licencia anual para hasta 6 usuarios, 1TB OneDrive",420000,50],
+["Logitech MX Master 3S",5,"Mouse ergonómico inalámbrico, 8000 DPI, silencioso",490000,22],
+["Cartucho Epson 544 Magenta",7,"Botella de tinta original para EcoTank, 65ml",52000,40]
+].map((a,i)=>({id:i+1,name:a[0],ci:a[1],desc:a[2],price:a[3],stock:a[4]}));
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>'$ '+Number(n).toLocaleString('es-CO');
+const load=(k,d)=>{try{const v=localStorage.getItem('tm_'+k);return v?JSON.parse(v):d}catch(e){return d}};
+const save=(k,v)=>{try{localStorage.setItem('tm_'+k,JSON.stringify(v))}catch(e){}};
+let P=load('products',seed),cart=load('cart',{}),users=load('users',[{name:'Administrador',email:'admin@techmarket.co',pass:'admin123',role:'admin'}]),
+    me=load('session',null),orders=load('orders',[]),cur=null;
+const persist=()=>{save('products',P);save('cart',cart);save('users',users);save('session',me);save('orders',orders)};
+const find=id=>P.find(p=>p.id==id);
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1900)}
+
+/* Catálogo */
+$('cats').innerHTML=cats.map((c,i)=>`<button class="cat" data-c="${i}" style="background:var(--card)"><span style="background:${c[2]}">${c[1]}</span>${c[0]}</button>`).join('');
+function render(){
+  const t=$('q').value.toLowerCase();
+  const l=P.filter(p=>(cur===null||p.ci===cur)&&(p.name+cats[p.ci][0]+p.desc).toLowerCase().includes(t));
+  $('count').textContent=l.length;
+  $('grid').innerHTML=l.length?l.map(p=>{const c=cats[p.ci],low=p.stock>0&&p.stock<=3,out=p.stock<=0;
+    return `<article class="p ${low?'low':''}"><div class="img" style="background:linear-gradient(135deg,${c[2]},#0f172a)">${c[1]}<span class="chip">${c[0]}</span>${low?'<span class="chip w">Pocas unidades</span>':''}${out?'<span class="chip w">Agotado</span>':''}</div>
+    <div class="body"><h3>${esc(p.name)}</h3><p class="d">${esc(p.desc)}</p><div class="row"><span class="price">${fmt(p.price)}</span><span class="stock">${out?'Sin stock':p.stock+' en stock'}</span></div>
+    <button class="add" data-i="${p.id}" ${out?'disabled style="opacity:.5;cursor:not-allowed"':''}>🛒 Agregar al carrito</button></div></article>`}).join(''):'<p class="empty">No encontramos productos.</p>';
+  const n=Object.values(cart).reduce((a,b)=>a+b,0);$('n').textContent=n;
+  $('who').textContent=me?'Hola, '+me.name.split(' ')[0]:'';
+  $('loginBtn').textContent=me?'Cerrar sesión':'Iniciar sesión';
+}
+$('grid').onclick=e=>{const b=e.target.closest('.add');if(!b)return;addCart(b.dataset.i)};
+function addCart(id){const p=find(id);if(!p)return;const q=(cart[id]||0)+1;
+  if(q>p.stock){toast('No hay más unidades disponibles');return}
+  cart[id]=q;persist();render();drawCart();toast(p.name+' agregado al carrito')}
+$('cats').onclick=e=>{const b=e.target.closest('.cat');if(!b)return;const i=+b.dataset.c;cur=cur===i?null:i;
+  document.querySelectorAll('.cat').forEach(x=>x.classList.toggle('on',+x.dataset.c===cur));render()};
+['all','all2'].forEach(id=>$(id).onclick=e=>{e.preventDefault();cur=null;$('q').value='';document.querySelectorAll('.cat').forEach(x=>x.classList.remove('on'));render()});
+$('q').oninput=render;
+
+/* Carrito */
+function drawCart(){
+  const ids=Object.keys(cart).filter(i=>find(i));let tot=0;
+  $('items').innerHTML=ids.length?ids.map(i=>{const p=find(i),c=cats[p.ci];tot+=p.price*cart[i];
+    return `<div class="it"><div class="ic" style="background:${c[2]}">${c[1]}</div><div class="inf"><b>${esc(p.name)}</b><span>${fmt(p.price)}</span></div>
+    <div class="qty"><button data-a="-" data-i="${i}">−</button>${cart[i]}<button data-a="+" data-i="${i}">+</button></div><button class="x" data-a="x" data-i="${i}" aria-label="Quitar">🗑</button></div>`}).join(''):'<p class="empty" style="padding:40px 0">Tu carrito está vacío. Agrega productos del catálogo.</p>';
+  $('total').textContent=fmt(tot);$('pay').disabled=!ids.length;$('pay').style.opacity=ids.length?1:.5;
+}
+$('items').onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;const i=b.dataset.i,p=find(i);
+  if(b.dataset.a=='+'){if(cart[i]+1>p.stock)return toast('Stock máximo alcanzado');cart[i]++}
+  else if(b.dataset.a=='-'){cart[i]--;if(cart[i]<=0)delete cart[i]}else delete cart[i];
+  persist();render();drawCart()};
+const openCart=()=>{drawCart();$('drawer').classList.add('on')};
+$('cartBtn').onclick=openCart;$('closeCart').onclick=()=>$('drawer').classList.remove('on');
+$('pay').onclick=()=>{
+  if(!me){$('drawer').classList.remove('on');return authModal('Inicia sesión para finalizar tu compra.')}
+  const ids=Object.keys(cart).filter(i=>find(i));if(!ids.length)return;
+  const lines=ids.map(i=>{const p=find(i);return{id:p.id,name:p.name,qty:cart[i],price:p.price}});
+  for(const l of lines){if(l.qty>find(l.id).stock)return toast('Sin stock suficiente de '+l.name)}
+  lines.forEach(l=>find(l.id).stock-=l.qty);
+  const o={n:orders.length+1001,email:me.email,user:me.name,date:new Date().toLocaleString('es-CO'),lines,total:lines.reduce((a,l)=>a+l.qty*l.price,0)};
+  orders.push(o);cart={};persist();render();drawCart();$('drawer').classList.remove('on');
+  modal(`<h3>¡Compra realizada! <button class="x" onclick="closeM()">✕</button></h3><p style="font-size:14px;line-height:1.6">Gracias, ${esc(me.name)}. Tu pedido <b>#${o.n}</b> por <b>${fmt(o.total)}</b> fue registrado.</p><button class="btn pri full" style="margin-top:16px" onclick="closeM()">Seguir comprando</button>`)};
+
+/* Modal */
+function modal(h,big){$('box').className='box'+(big?' big':'');$('box').innerHTML=h;$('ov').classList.add('on')}
+function closeM(){$('ov').classList.remove('on')}
+$('ov').onclick=e=>{if(e.target.id=='ov')closeM()};
+
+/* Sesión */
+function authModal(note,tab){tab=tab||'in';
+  modal(`<h3>${tab=='in'?'Iniciar sesión':'Crear cuenta'} <button class="x" onclick="closeM()">✕</button></h3>
+  <div class="tabs"><button class="${tab=='in'?'on':''}" onclick="authModal('','in')">Ingresar</button><button class="${tab=='up'?'on':''}" onclick="authModal('','up')">Registrarme</button></div>
+  ${note?`<p class="msg" style="color:var(--blue)">${note}</p>`:''}
+  ${tab=='up'?'<label class="f">Nombre<input id="an" autocomplete="name"></label>':''}
+  <label class="f">Correo<input id="ae" type="email" autocomplete="email"></label>
+  <label class="f">Contraseña<input id="ap" type="password" autocomplete="current-password"></label>
+  <p class="msg" id="am"></p><button class="btn pri full" id="go">${tab=='in'?'Entrar':'Crear cuenta'}</button>
+  ${tab=='in'?'<p class="hint">Acceso de administrador: admin@techmarket.co / admin123</p>':''}`);
+  $('go').onclick=()=>{const e=$('ae').value.trim().toLowerCase(),p=$('ap').value,m=$('am');
+    if(!e||!p){m.textContent='Completa todos los campos.';return}
+    if(tab=='in'){const u=users.find(u=>u.email==e&&u.pass==p);if(!u){m.textContent='Correo o contraseña incorrectos.';return}me=u}
+    else{const n=$('an').value.trim();if(!n){m.textContent='Escribe tu nombre.';return}
+      if(p.length<6){m.textContent='La contraseña necesita al menos 6 caracteres.';return}
+      if(users.some(u=>u.email==e)){m.textContent='Ese correo ya está registrado.';return}
+      me={name:n,email:e,pass:p,role:'user'};users.push(me)}
+    persist();render();closeM();toast('Bienvenido, '+me.name)}}
+$('loginBtn').onclick=()=>{if(me){me=null;persist();render();toast('Sesión cerrada')}else authModal()};
+
+/* Admin */
+$('adminBtn').onclick=()=>{
+  if(!me)return authModal('Inicia sesión como administrador para continuar.');
+  if(me.role!='admin')return toast('Tu cuenta no tiene permisos de administrador');
+  admin('p')};
+function admin(tab,edit){
+  const head=`<h3>Panel de administración <button class="x" onclick="closeM()">✕</button></h3><div class="tabs"><button class="${tab=='p'?'on':''}" onclick="admin('p')">Productos</button><button class="${tab=='o'?'on':''}" onclick="admin('o')">Pedidos (${orders.length})</button><button class="${tab=='f'?'on':''}" onclick="admin('f')">${edit?'Editar':'Nuevo'} producto</button></div>`;
+  let b='';
+  if(tab=='p')b=`<div class="sc"><table class="tbl"><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th></th></tr>${P.map(p=>`<tr><td>${esc(p.name)}</td><td>${cats[p.ci][0]}</td><td>${fmt(p.price)}</td><td>${p.stock}</td><td style="white-space:nowrap"><button class="mini" onclick="admin('f',${p.id})">Editar</button><button class="mini d" onclick="delP(${p.id})">Eliminar</button></td></tr>`).join('')}</table></div>`;
+  if(tab=='o')b=orders.length?orders.slice().reverse().map(o=>`<div class="ord"><b>Pedido #${o.n}</b> · ${esc(o.user)} (${esc(o.email)})<br><span style="color:var(--mute)">${o.date}</span><br>${o.lines.map(l=>`${l.qty} × ${esc(l.name)}`).join('<br>')}<br><b>Total: ${fmt(o.total)}</b></div>`).join(''):'<p class="empty">Aún no hay pedidos.</p>';
+  if(tab=='f'){const p=edit?find(edit):{name:'',ci:0,desc:'',price:'',stock:''};
+    b=`<label class="f">Nombre<input id="fn" value="${esc(p.name)}"></label><div class="two"><label class="f">Categoría<select id="fc">${cats.map((c,i)=>`<option value="${i}" ${i==p.ci?'selected':''}>${c[0]}</option>`).join('')}</select></label><label class="f">Precio (COP)<input id="fp" type="number" min="0" value="${p.price}"></label></div>
+    <label class="f">Descripción<textarea id="fd" rows="2">${esc(p.desc)}</textarea></label><label class="f">Stock<input id="fs" type="number" min="0" value="${p.stock}"></label><p class="msg" id="fm"></p>
+    <button class="btn pri" onclick="saveP(${edit||0})">Guardar producto</button>`}
+  modal(head+b,true)}
+function delP(id){if(!confirm('¿Eliminar este producto?'))return;P=P.filter(p=>p.id!=id);delete cart[id];persist();render();admin('p')}
+function saveP(id){const n=$('fn').value.trim(),pr=+$('fp').value,st=+$('fs').value;
+  if(!n||!(pr>0)||$('fs').value===''||st<0){$('fm').textContent='Revisa nombre, precio y stock.';return}
+  const d={name:n,ci:+$('fc').value,desc:$('fd').value.trim(),price:pr,stock:st};
+  if(id)Object.assign(find(id),d);else P.push({id:Math.max(0,...P.map(p=>p.id))+1,...d});
+  persist();render();admin('p');toast('Producto guardado')}
+render();
+</script>
+</body>
+</html>
